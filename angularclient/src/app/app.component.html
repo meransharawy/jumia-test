@@ -1,0 +1,59 @@
+<head>
+  <meta charset="utf-8">
+  <title>Spring Boot - Angular Application</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" 
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+</head>
+
+<div class="filtering">
+  <h3>FILTERING</h3>
+
+  <form #filterationForm="ngForm" novalidate (ngSubmit)="onSubmit()">
+
+
+    <label for="countryName">Country Name:</label>
+    <select  id="countryName" name="countryName" [(ngModel)]="filterationModel.countryName">
+    <option *ngFor="let country of countries" value={{country}}>{{country}}</option> 
+    </select><br><br>
+
+
+    <label for="state">State:</label>
+    <select id="state" name="state" [(ngModel)]="filterationModel.state">
+    <option value="True">True</option>
+    <option value="False">False</option>
+    </select><br><br>
+   
+    <input type="submit" value="Filter!">
+  </form> <br>
+
+<div>
+
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">Country Name </th>
+          <th scope="col">Country Code</th>
+          <th scope="col">state</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers">
+          <td>{{ customer.customerName }}</td>
+          <td>{{ customer.phoneNumber }}</td>
+          <td>{{ customer.countryName }}</td>
+          <td>{{ customer.countryCode }}</td>
+          <td>{{ customer.state }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
